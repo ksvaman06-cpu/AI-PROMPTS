@@ -3,11 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Prompt Store</title>
+    <title>PromptMaster - AI Art Gallery</title>
+    <!-- Tailwind CSS aur Google Fonts Inter (Styling ke liye) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
 </head>
 <body>
-    <!-- Yeh div React app ko load karega -->
-    <div id="root"></div>
-    <!-- Vercel React ko is root element mein render karega -->
+    <div id="root">
+        <div class="fixed inset-0 flex items-center justify-center bg-gray-900 text-white">
+            <div class="flex items-center space-x-2">
+                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purple-500"></div>
+                <p>React Application load ho raha hai...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.0/babel.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    </script>
+
+    <script type="module" src="./App.jsx"></script>
+
+    <script type="text/babel"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        import App from './App.jsx';
+        root.render(<App />);
+    </script>
 </body>
 </html>
